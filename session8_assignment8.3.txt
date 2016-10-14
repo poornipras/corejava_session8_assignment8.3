@@ -1,0 +1,48 @@
+Write a program for file copy.
+6. Expected Output
+Destination file should have same contents as Source file.
+
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+public class copyfile
+{
+	public static void main(String[] args)	
+		{
+			final String file_name="hello.txt";	
+			final String new_file="copyfile.txt";
+		try 
+		{
+			FileOutputStream writer=new FileOutputStream(file_name);
+			writer.write("hello how are you".getBytes());
+			writer.close();
+		} 
+		catch (FileNotFoundException e){}
+		catch (IOException e) {}
+		
+		
+		try
+		{
+		FileInputStream reader=new FileInputStream(file_name);
+		FileOutputStream out=new FileOutputStream(new_file);
+		
+			byte[] data=new byte[reader.available()];
+			int length=data.length;
+			System.out.println(length);
+			reader.read(data);				
+			out.write(data);
+		
+			reader.close();
+			System.out.println("Reading from  "+file_name+"  "  +new String(data));		
+		    } 
+		catch (IOException e) {}
+		
+			}
+}
+		
+		
+
+	
+
